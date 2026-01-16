@@ -16,6 +16,7 @@ html, body {
   margin: 0;
   background: #353535;
   overflow: hidden;
+ 
 }
  
 .box {
@@ -39,11 +40,15 @@ canvas {
   width: 100vw;
   height: 100vh;
 }
-   .center-text {
+  .center-text {
   position: fixed;
   inset: 0;
   z-index: 10;
   pointer-events: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
   #changingText {
   font-size: 31px;
@@ -51,6 +56,8 @@ canvas {
 
   display: inline-block;
   white-space: pre-line;
+   line-height: 1.4;
+  padding: 6px 10px;
 
   background-image: linear-gradient(
     90deg,
@@ -70,6 +77,11 @@ canvas {
   -webkit-text-fill-color: transparent;
 
   animation: gradientMove 6s ease infinite;
+    line-height: 1.4;
+  padding: 6px 10px;
+}
+   .heart-text {
+  transform: translateY(40px);
 }
    @keyframes gradientMove {
   0%   { background-position:   0% 50%; }
@@ -391,7 +403,8 @@ function onResize() {
     justify-content: center;
     text-align: center;
   ">
-<span id="changingText">Anh Hiếu❤️</span>
+<span id="changingText" class="heart-text">Anh Hiếu❤️</span>
+   
    
 </div>
 
