@@ -40,15 +40,13 @@ canvas {
   width: 100vw;
   height: 100vh;
 }
-  .center-text {
+ .center-text {
   position: fixed;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
   pointer-events: none;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
   #changingText {
   font-size: 31px;
@@ -58,7 +56,7 @@ canvas {
   white-space: pre-line;
    line-height: 1.4;
   padding: 6px 10px;
-
+ transform: translateY(6vh);
   background-image: linear-gradient(
     90deg,
     #c300ff,
@@ -79,9 +77,6 @@ canvas {
   animation: gradientMove 6s ease infinite;
     line-height: 1.4;
   padding: 6px 10px;
-}
-   .heart-text {
-  transform: translateY(40px);
 }
    @keyframes gradientMove {
   0%   { background-position:   0% 50%; }
