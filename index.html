@@ -46,6 +46,24 @@ canvas {
   z-index: 10;
   pointer-events: none;
 }
+   #heart-text {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  pointer-events: none;
+}
+
+#changingText {
+  font-size: clamp(18px, 4vw, 32px);
+}
   #changingText {
   font-size: 31px;
   font-style: italic;
@@ -85,6 +103,9 @@ canvas {
    <div class="box">
     <canvas id="snow"></canvas>
     <canvas id="pinkboard"></canvas>
+    <div id="heart-text">
+  <span id="changingText">Anh Hiếu❤️</span>
+</div>
    </div>
    <script>
 const snow = document.getElementById("snow");
@@ -346,8 +367,17 @@ var ParticlePool = (function() {
     for (var i = 0; i < amount; i++) {
       var pos = pointOnHeart(Math.PI - 2 * Math.PI * Math.random());
       var dir = pos.clone().length(settings.particles.velocity);
-      particles.add(canvas.width / 2 + pos.x, canvas.height / 2 - pos.y, dir.x, -dir.y);
-    }
+   const heartCenterY =
+  window.innerWidth < 768
+    ? canvas.height / 2 - 60
+    : canvas.height / 2 - 30;
+
+particles.add(
+  canvas.width / 2 + pos.x,
+  heartCenterY - pos.y,
+  dir.x,
+  -dir.y
+);
    
     // update and draw particles
     particles.update(deltaTime);
@@ -368,35 +398,7 @@ function onResize() {
   }, 10);
 })(document.getElementById('pinkboard'));
   </script>
-  <div class="center-text"
-  
-  style="
-    width: 100%;
-    height: 100%;
-    font-size: 31px;
-    font-style: italic;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 5px;
-    text-align: center;
-">
-  <div id="textBox"
-  style="
-    width: 100%;
-    height: 100%;
-    font-size: 31px;
-    font-style: italic;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  ">
-<span id="changingText">Anh Hiếu❤️</span>
-   
-</div>
-
-</div>
+ 
 <script>
 const texts = [
   " Anh Hiếu ❤️",
